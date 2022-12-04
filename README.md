@@ -1,5 +1,5 @@
-# {project_name}
-Description XXX.
+# Firewall - pfsense CE 2.6
+Project that will create the VMs that will work as the Firewall of the HomeLab.
 
 # Scripts:
 [Packer](packer/ "Packer")
