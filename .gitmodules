@@ -4,9 +4,6 @@
 [submodule "terraform/modules/proxmox-ubuntu-22-04"]
 	path = terraform/modules/proxmox-ubuntu-22-04
 	url = https://github.com/lsampaioweb/terraform-proxmox-ubuntu-22-04-module.git
-[submodule "packer/clone"]
-	path = packer/clone
-	url = https://github.com/lsampaioweb/packer-proxmox-ubuntu-22-04-clone.git
 [submodule "terraform/modules/random-target-node"]
 	path = terraform/modules/random-target-node
 	url = https://github.com/lsampaioweb/terraform-random-target-node.git
