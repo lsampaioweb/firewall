@@ -4,10 +4,8 @@ variable "boot_wait" {
   default     = "40s"
 }
 
-variable "boot_command" {
-  description = "It specifies the keys to type when the virtual machine is first booted in order to start the OS installer."
-  type        = list(string)
-  default = [
+locals {
+  boot_command = [
     # Accept copyright.
     "<enter><wait2s>",
     # Options: Install, Rescue Shell, Recover config.xml
@@ -45,6 +43,10 @@ variable "boot_command" {
     "pkg install -y sudo<enter><wait10s>",
     "pkg install -y qemu-guest-agent<enter><wait10s>",
     "service qemu-guest-agent onestart<enter><wait2s>",
+    # Change the password.
+    "passwd admin<enter><wait1s>",
+    "${local.ssh_password}<enter><wait1s>",
+    "${local.ssh_password}<enter><wait1s>",
     # Return to the main menu.
     "exit<enter><wait2s>"
   ]

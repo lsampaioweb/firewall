@@ -2,11 +2,9 @@
 localhost ansible_connection=local
 
 [target]
-template ansible_host=192.168.0.63
+template ansible_host=192.168.0.181
 
 [target:vars]
-ansible_user=admin
-ansible_password=pfsense
 ansible_python_interpreter=/usr/local/bin/python3.8
 
 [proxmox]

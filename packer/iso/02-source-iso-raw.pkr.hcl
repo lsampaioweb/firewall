@@ -72,11 +72,11 @@ source "proxmox-iso" "template" {
   # Boot Command
   boot_wait      = var.boot_wait
   http_directory = var.http_directory
-  boot_command   = var.boot_command
+  boot_command   = local.boot_command
 
   # SSH Connection with the template
   ssh_username = var.ssh_username
-  ssh_password = var.ssh_password
+  ssh_password = local.ssh_password
   ssh_timeout  = var.ssh_timeout
 }
 
