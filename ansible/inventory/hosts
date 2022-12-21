@@ -5,6 +5,7 @@ localhost ansible_connection=local
 template ansible_host=192.168.0.181
 
 [target:vars]
+hostname=pfsense-CE-2.6
 ansible_python_interpreter=/usr/local/bin/python3.8
 
 [proxmox]

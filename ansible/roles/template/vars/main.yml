@@ -1,0 +1,9 @@
+---
+# The user account that Ansible will use to connect and run commands.
+ansible_user: "admin"
+
+# The id of the password saved in the secret manager.
+ansible_password_id: "{{ hostname }}"
+
+# The password that Ansible will use to connect and run commands into each host.
+ansible_password: "{{ lookup('pipe', 'secret-tool lookup password ' + ansible_password_id) }}"
