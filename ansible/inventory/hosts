@@ -5,5 +5,12 @@ localhost ansible_connection=local
 template ansible_host=<ip>
 
 [target:vars]
-ansible_user=usr_ansible
-ansible_password=<password>
+ansible_user=admin
+ansible_password=pfsense
+ansible_python_interpreter=/usr/local/bin/python3.8
+
+[proxmox]
+kvm-01 ansible_host=192.168.0.11
+
+[proxmox:vars]
+ansible_python_interpreter=/usr/bin/python3.9

@@ -1,7 +1,14 @@
 variable "ssh_username" {
   description = "User name that Packer will use to connect to the VM through SSH."
   type        = string
-  default     = "usr_ansible"
+  default     = "admin"
+}
+
+variable "ssh_password" {
+  description = "Password that Packer will use to connect to the VM through SSH."
+  type        = string
+  default     = "pfsense"
+  sensitive   = true
 }
 
 variable "ssh_timeout" {

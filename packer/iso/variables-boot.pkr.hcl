@@ -25,7 +25,7 @@ variable "boot_command" {
     # Select the vtbd0 as the block Device.
     "<spacebar><wait1s><enter><wait2s>",
     # Confirm the ZFS configuration.
-    "<left><wait1s><enter><wait35s>",
+    "<left><wait1s><enter><wait40s>",
     # Manual Configuration menu
     # Default No, Left for Yes
     "<enter><wait2s>",
@@ -34,11 +34,19 @@ variable "boot_command" {
     # n to setting up vlan.
     "n<enter><wait2s>",
     # vtnet0 for WAN interface name.
-    "vtnet0<enter><wait2>",
+    "vtnet0<enter><wait2s>",
     # blank for LAN interface.
     "<enter><wait2s>y<enter><wait50s>",
     # 14 -> y to enable sshd.
-    "14<enter><wait2s>y<enter><wait2s>"
+    "14<enter><wait2s>y<enter><wait2s>",
+    # 8 -> Enter shell.
+    "8<enter><wait2s>",
+    # Instala o pacote do qemu no shell.
+    "pkg install -y sudo<enter><wait10s>",
+    "pkg install -y qemu-guest-agent<enter><wait10s>",
+    "service qemu-guest-agent onestart<enter><wait2s>",
+    # Return to the main menu.
+    "exit<enter><wait2s>"
   ]
 }
 

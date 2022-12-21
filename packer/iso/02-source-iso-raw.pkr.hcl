@@ -46,12 +46,27 @@ source "proxmox-iso" "template" {
     io_thread         = var.disk_io_thread
   }
 
-  # Network
+  # Networks
+  # WAN
   network_adapters {
     bridge   = var.network_adapters_0_bridge
     vlan_tag = var.network_adapters_0_vlan_tag
     model    = var.network_adapters_0_model
     firewall = var.network_adapters_0_firewall
+  }
+  # LAN
+  network_adapters {
+    bridge   = var.network_adapters_1_bridge
+    vlan_tag = var.network_adapters_1_vlan_tag
+    model    = var.network_adapters_1_model
+    firewall = var.network_adapters_1_firewall
+  }
+  # Sync
+  network_adapters {
+    bridge   = var.network_adapters_2_bridge
+    vlan_tag = var.network_adapters_2_vlan_tag
+    model    = var.network_adapters_2_model
+    firewall = var.network_adapters_2_firewall
   }
 
   # Boot Command
@@ -61,7 +76,7 @@ source "proxmox-iso" "template" {
 
   # SSH Connection with the template
   ssh_username = var.ssh_username
-  ssh_password = file(local.path_random_password)
+  ssh_password = var.ssh_password
   ssh_timeout  = var.ssh_timeout
 }
 
@@ -70,14 +85,14 @@ build {
 
   sources = ["source.proxmox-iso.template"]
 
-  # provisioner "ansible" {
-  #   playbook_file = "${local.path_ansible_scripts}/template.yml"
-  #   user          = var.ssh_username
+  provisioner "ansible" {
+    playbook_file = "${local.path_ansible_scripts}/template.yml"
+    user          = var.ssh_username
 
-  #   ansible_env_vars = ["ANSIBLE_CONFIG=${local.path_ansible_scripts}/ansible.cfg"]
+    ansible_env_vars = ["ANSIBLE_CONFIG=${local.path_ansible_scripts}/ansible.cfg ANSIBLE_PYTHON_INTERPRETER=/usr/local/bin/python3.8"]
 
-  #   // This is a bug/workaround and I didn't like it. 
-  #   // TODO - Find a better solution.
-  #   ansible_ssh_extra_args = ["-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa"]
-  # }
+    // This is a bug/workaround and I didn't like it. 
+    // TODO - Find a better solution.
+    ansible_ssh_extra_args = ["-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa"]
+  }
 }
