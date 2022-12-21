@@ -2,7 +2,7 @@
 localhost ansible_connection=local
 
 [target]
-template ansible_host=<ip>
+template ansible_host=192.168.0.63
 
 [target:vars]
 ansible_user=admin
@@ -11,6 +11,12 @@ ansible_python_interpreter=/usr/local/bin/python3.8
 
 [proxmox]
 kvm-01 ansible_host=192.168.0.11
+kvm-02 ansible_host=192.168.0.12
+kvm-03 ansible_host=192.168.0.13
+kvm-04 ansible_host=192.168.0.14
+kvm-05 ansible_host=192.168.0.15
+kvm-06 ansible_host=192.168.0.16
+kvm-07 ansible_host=192.168.0.17
 
 [proxmox:vars]
 ansible_python_interpreter=/usr/bin/python3.9

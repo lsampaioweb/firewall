@@ -7,15 +7,7 @@ Run the command in the terminal:
 
 # Tasks:
 
-## 1. Change the hostname of the server.
-
-## 2. Install required packages.
-
-## 3. Setup the fail2ban application.
-
-## 4. Remove unnecessary files, folders and configuration.
-
-## 5. Recreate the machine-id file so the new VM can get a new IP.
+## 1. Install required packages.
 
 # Created by: 
 
