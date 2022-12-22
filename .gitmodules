@@ -4,3 +4,6 @@
 [submodule "terraform/modules/random-target-node"]
 	path = terraform/modules/random-target-node
 	url = https://github.com/lsampaioweb/terraform-random-target-node.git
+[submodule "terraform/modules/proxmox-vm"]
+	path = terraform/modules/proxmox-vm
+	url = https://github.com/lsampaioweb/terraform-proxmox-vm-module.git
