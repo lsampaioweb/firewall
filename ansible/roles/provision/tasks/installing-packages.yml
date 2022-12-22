@@ -1,5 +1,5 @@
 ---
-- name: "Upgrading the packages"
-  ansible.builtin.apt:
-    update_cache: true
-    upgrade: "safe"
+- name: "Upgrading all packages"
+  community.general.pkgng:
+    name: "*"
+    state: "latest"

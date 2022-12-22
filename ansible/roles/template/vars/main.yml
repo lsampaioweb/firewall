@@ -7,3 +7,6 @@ ansible_password_id: "{{ hostname }}"
 
 # The password that Ansible will use to connect and run commands into each host.
 ansible_password: "{{ lookup('pipe', 'secret-tool lookup password ' + ansible_password_id) }}"
+
+# Path of the CA Certificate.
+ssl_certificate_path: "/opt/certificates/certificate.authority/certificate.authority.crt"

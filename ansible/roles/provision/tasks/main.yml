@@ -1,6 +1,9 @@
 ---
 - name: "Changing the hostname"
-  ansible.builtin.import_tasks: "roles/common/tasks/debian/os/hostname.yml"
+  ansible.builtin.import_tasks: "roles/common/tasks/freebsd/os/hostname.yml"
 
 - name: "Installing required packages"
   ansible.builtin.import_tasks: "installing-packages.yml"
+
+- name: "Removing unnecessary files, folders and configuration"
+  ansible.builtin.import_tasks: "roles/common/tasks/freebsd/os/clean-up.yml"
