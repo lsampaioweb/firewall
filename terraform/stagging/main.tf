@@ -4,8 +4,8 @@ module "random-target-node" {
   for_each = var.vm_instance
 }
 
-module "proxmox-ubuntu-22-04" {
-  source = "../modules/proxmox-ubuntu-22-04"
+module "proxmox-vm" {
+  source = "../modules/proxmox-vm"
 
   for_each = var.vm_instance
 
@@ -14,6 +14,7 @@ module "proxmox-ubuntu-22-04" {
   name        = "stg-firewall-${each.key}"
   onboot      = each.value.onboot
   vcpus       = each.value.vcpus
+  networks    = var.networks
 
   description = "pfSense firewall"
   pool        = "Stagging"
@@ -25,12 +26,11 @@ resource "local_file" "ansible_hosts" {
       host_list = [
         for key, value in var.vm_instance :
         {
-          hostname    = module.proxmox-ubuntu-22-04[key].vm_name
-          public_ip   = module.proxmox-ubuntu-22-04[key].vm_ipv4
-          password_id = module.proxmox-ubuntu-22-04[key].vm_cloned_from
+          hostname    = module.proxmox-vm[key].vm_name
+          public_ip   = module.proxmox-vm[key].vm_ipv4
+          password_id = module.proxmox-vm[key].vm_cloned_from
 
-          state          = value.state
-          priority       = value.priority
+          state = value.state
         }
       ]
     }
