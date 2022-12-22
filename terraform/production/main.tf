@@ -14,7 +14,7 @@ module "proxmox-vm" {
   name        = "prd-firewall-${each.key}"
   onboot      = each.value.onboot
   vcpus       = each.value.vcpus
-  networks    = var.networks
+  networks    = each.value.networks
 
   description = "pfSense firewall"
   pool        = "Production"

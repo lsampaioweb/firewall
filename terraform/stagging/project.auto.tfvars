@@ -1,36 +1,48 @@
 vm_instance = {
   "01" = {
-    onboot = true
-    vcpus  = 3
     state  = "MASTER"
-  },
-  "02" = {
     onboot = true
     vcpus  = 3
-    state  = "BACKUP"
-  }
-}
-
-networks = {
-  "01" = {
-    # WAN
-    model    = "virtio"
-    bridge   = "vmbr0"
-    tag      = -1
-    firewall = false
+    networks = {
+      "01" = {
+        # WAN
+        model   = "virtio"
+        bridge  = "vmbr0"
+        macaddr = "C6:61:89:85:B9:04"
+      },
+      "02" = {
+        # LAN
+        model  = "virtio"
+        bridge = "vmbr3"
+      },
+      "03" = {
+        # Sync
+        model  = "virtio"
+        bridge = "vmbr4"
+      }
+    }
   },
   "02" = {
-    # LAN
-    model    = "virtio"
-    bridge   = "vmbr3"
-    tag      = -1
-    firewall = false
-  },
-  "03" = {
-    # Sync
-    model    = "virtio"
-    bridge   = "vmbr4"
-    tag      = -1
-    firewall = false
+    state  = "BACKUP"
+    onboot = true
+    vcpus  = 3
+    networks = {
+      "01" = {
+        # WAN
+        model   = "virtio"
+        bridge  = "vmbr0"
+        macaddr = "B6:00:4C:7F:E1:9A"
+      },
+      "02" = {
+        # LAN
+        model  = "virtio"
+        bridge = "vmbr3"
+      },
+      "03" = {
+        # Sync
+        model  = "virtio"
+        bridge = "vmbr4"
+      }
+    }
   }
 }
