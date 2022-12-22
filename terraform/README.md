@@ -1,5 +1,5 @@
-# proxmox-ubuntu-22-04-server-standard
-Project with Terraform and Ansible scripts to create an Ubuntu template on Proxmox from a cloned virtual machine with the default packages and updates.
+# Firewall - pfsense CE 2.6
+Project that will create the VMs that will work as the Firewall of the HomeLab.
 
 Run these commands on the Proxmox node (just once and on any node):
 ```bash

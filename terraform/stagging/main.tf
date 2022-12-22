@@ -10,7 +10,7 @@ module "proxmox-ubuntu-22-04" {
   for_each = var.vm_instance
 
   target_node = "kvm-0${module.random-target-node[each.key].result}"
-  clone       = "ubuntu-22-04-server-std-docker"
+  clone       = "pfsense-CE-2.6"
   name        = "stg-firewall-${each.key}"
   onboot      = each.value.onboot
   vcpus       = each.value.vcpus
