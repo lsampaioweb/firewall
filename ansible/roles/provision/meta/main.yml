@@ -1,18 +1,17 @@
+---
 galaxy_info:
-  author: Luciano Sampaio
-  description: Setup Ubuntu VM with default settings.
   company: thecodemaster.net
+  author: Luciano Sampaio
+  description: Setup pfSense image with default settings.
 
   license: MIT
 
   min_ansible_version: 2.10.5
   platforms:
-    - name: Ubuntu
+    - name: FreeBSD
 
   galaxy_tags:
     - proxmox
-    - ubuntu
-    - terraform
 
 dependencies:
   - role: common

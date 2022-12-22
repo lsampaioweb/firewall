@@ -43,7 +43,7 @@ resource "local_file" "ansible_hosts" {
   provisioner "local-exec" {
     working_dir = local.path_ansible_scripts
 
-    command = "ansible-playbook provision.yml"
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook provision.yml"
   }
 
   # provisioner "local-exec" {

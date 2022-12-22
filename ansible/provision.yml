@@ -1,6 +1,6 @@
 ---
 - name: "Preparing the virtual machine with some settings"
-  hosts: "all"
+  hosts: "pfsense"
   become: true
 
   roles:

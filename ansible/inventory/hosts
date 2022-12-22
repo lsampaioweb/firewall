@@ -21,18 +21,10 @@ kvm-07 ansible_host=192.168.0.17
 ansible_python_interpreter=/usr/bin/python3.9
 
 [master]
-%{ for item in host_list ~}
-%{ if item.state == "MASTER" ~}
-${item.hostname} ansible_host=${item.public_ip} hostname=${item.hostname} password_id=${item.password_id} state=${item.state}
-%{ endif ~}
-%{ endfor ~}
+stg-firewall-01 ansible_host=192.168.0.204 hostname=stg-firewall-01 password_id=pfsense-CE-2.6 state=MASTER
 
 [backup]
-%{ for item in host_list ~}
-%{ if item.state == "BACKUP" ~}
-${item.hostname} ansible_host=${item.public_ip} hostname=${item.hostname} password_id=${item.password_id} state=${item.state}
-%{ endif ~}
-%{ endfor ~}
+stg-firewall-02 ansible_host=192.168.0.186 hostname=stg-firewall-02 password_id=pfsense-CE-2.6 state=BACKUP
 
 [pfsense:children]
 master
