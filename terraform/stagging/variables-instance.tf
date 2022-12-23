@@ -6,8 +6,8 @@ variable "vm_instance" {
     onboot   = optional(bool)
     vcpus    = optional(number)
     networks = optional(map(object({
-      model    = string
       bridge   = string
+      model    = string
       tag      = optional(number)
       firewall = optional(bool)
       macaddr  = optional(string)

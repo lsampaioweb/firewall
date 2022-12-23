@@ -6,19 +6,24 @@ vm_instance = {
     networks = {
       "01" = {
         # WAN
-        model   = "virtio"
         bridge  = "vmbr0"
+        model   = "virtio"
         macaddr = "C6:61:89:85:B9:04"
       },
       "02" = {
         # LAN
+        bridge = "vmbr2"
         model  = "virtio"
-        bridge = "vmbr3"
       },
       "03" = {
-        # Sync
+        # Sync - Cluster
+        bridge = "vmbr3"
         model  = "virtio"
+      },
+      "04" = {
+        # VMs
         bridge = "vmbr4"
+        model  = "virtio"
       }
     }
   },
@@ -29,19 +34,24 @@ vm_instance = {
     networks = {
       "01" = {
         # WAN
-        model   = "virtio"
         bridge  = "vmbr0"
+        model   = "virtio"
         macaddr = "B6:00:4C:7F:E1:9A"
       },
       "02" = {
         # LAN
+        bridge = "vmbr2"
         model  = "virtio"
-        bridge = "vmbr3"
       },
       "03" = {
-        # Sync
+        # Sync - Cluster
+        bridge = "vmbr3"
         model  = "virtio"
+      },
+      "04" = {
+        # VMs
         bridge = "vmbr4"
+        model  = "virtio"
       }
     }
   }
