@@ -49,7 +49,7 @@ resource "local_file" "ansible_hosts" {
   # provisioner "local-exec" {
   #   when = destroy
 
-  #   working_dir = local.path_ansible_scripts
+  #   working_dir = "../../ansible"
 
   #   command = "ansible-playbook destroy.yml"
   # }
