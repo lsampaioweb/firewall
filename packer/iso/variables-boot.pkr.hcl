@@ -40,6 +40,7 @@ locals {
     # 8 -> Enter shell.
     "8<enter><wait2s>",
     # Instala o pacote do qemu no shell.
+    "pkg update<enter><wait10s>",
     "pkg install -y sudo<enter><wait10s>",
     "pkg install -y qemu-guest-agent<enter><wait10s>",
     "service qemu-guest-agent onestart<enter><wait2s>",
