@@ -5,19 +5,20 @@ module "random-target-node" {
 }
 
 module "proxmox-vm" {
-  source = "github.com/lsampaioweb/terraform-proxmox-vm-module.git?ref=v1.1"
+  source = "github.com/lsampaioweb/terraform-proxmox-vm-module.git?ref=v1.3"
 
   for_each = var.vm_instance
 
   target_node = "kvm-0${module.random-target-node[each.key].result}"
-  clone       = "pfsense-CE-2.6"
-  name        = "stg-firewall-${each.key}"
+  clone       = (each.value.clone != null) ? each.value.clone : "pfsense-CE-2.6"
+  name        = "${var.environment_short_name}-firewall-${each.key}-${each.key}"
   onboot      = each.value.onboot
+  startup     = each.value.startup
   vcpus       = each.value.vcpus
   networks    = each.value.networks
 
-  description = "pfSense firewall"
-  pool        = "Staging"
+  description = "pfSense firewall - ${var.environment}."
+  pool        = var.environment
 }
 
 resource "local_file" "ansible_hosts" {

@@ -40,14 +40,14 @@ locals {
     # 8 -> Enter shell.
     "8<enter><wait2s>",
     # Instala o pacote do qemu no shell.
-    "pkg update<enter><wait10s>",
-    "pkg install -y sudo<enter><wait10s>",
-    "pkg install -y qemu-guest-agent<enter><wait10s>",
+    "pkg update<enter><wait20s>",
+    "pkg install -y sudo<enter><wait20s>",
+    "pkg install -y qemu-guest-agent<enter><wait20s>",
     "service qemu-guest-agent onestart<enter><wait2s>",
     # Change the password.
     "passwd admin<enter><wait1s>",
-    "${local.ssh_password}<enter><wait1s>",
-    "${local.ssh_password}<enter><wait1s>",
+    "${file(local.path_random_password)}<enter><wait1s>",
+    "${file(local.path_random_password)}<enter><wait1s>",
     # Return to the main menu.
     "exit<enter><wait2s>"
   ]

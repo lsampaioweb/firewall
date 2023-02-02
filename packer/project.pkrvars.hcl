@@ -25,12 +25,5 @@ network_adapters = {
     model    = "virtio"
     vlan_tag = ""
     firewall = false
-  },
-  "04" = {
-    # VMs
-    bridge   = "vmbr4"
-    model    = "virtio"
-    vlan_tag = ""
-    firewall = false
   }
 }
