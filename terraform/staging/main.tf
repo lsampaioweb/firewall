@@ -1,15 +1,15 @@
-module "random-target-node" {
+module "random_target_node" {
   source = "github.com/lsampaioweb/terraform-random-target-node.git?ref=v1.0"
 
   for_each = var.vm_instance
 }
 
-module "proxmox-vm" {
+module "proxmox_vm" {
   source = "github.com/lsampaioweb/terraform-proxmox-vm-qemu.git?ref=v1.4"
 
   for_each = var.vm_instance
 
-  target_node = "kvm-0${module.random-target-node[each.key].result}"
+  target_node = "kvm-0${module.random_target_node[each.key].result}"
   clone       = (each.value.clone != null) ? each.value.clone : "pfsense-CE-2.6"
   name        = "${var.environment_short_name}-firewall-${each.key}-${each.key}"
   onboot      = each.value.onboot
@@ -27,9 +27,9 @@ resource "local_file" "ansible_hosts" {
       host_list = [
         for key, value in var.vm_instance :
         {
-          hostname    = module.proxmox-vm[key].vm_name
-          public_ip   = module.proxmox-vm[key].vm_ipv4
-          password_id = module.proxmox-vm[key].vm_cloned_from
+          hostname    = module.proxmox_vm[key].vm_name
+          public_ip   = module.proxmox_vm[key].vm_ipv4
+          password_id = module.proxmox_vm[key].vm_cloned_from
 
           state = value.state
         }
