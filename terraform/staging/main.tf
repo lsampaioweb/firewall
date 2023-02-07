@@ -11,9 +11,9 @@ module "proxmox_vm" {
 
   for_each = var.vm_instance
 
-  target_node = "kvm-0${module.random_target_node[each.key].result}"
+  target_node = "kvm-${format("%.2d", module.random_target_node[each.key].result)}"
   clone       = (each.value.clone != null) ? each.value.clone : "pfsense-CE-2.6"
-  name        = "${var.environment_short_name}-firewall-${each.key}-${each.key}"
+  name        = "${var.environment_short_name}-firewall-${each.key}"
   onboot      = each.value.onboot
   startup     = each.value.startup
   vcpus       = each.value.vcpus
