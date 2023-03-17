@@ -2,7 +2,7 @@
 
 Run the command in the terminal:
 ```bash
-  ansible-playbook kvm_node.yml
+  ansible-playbook kvm_setup.yml
 ```
 
 # Tasks:
