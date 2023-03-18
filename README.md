@@ -2,8 +2,6 @@
 Project that will create the VMs that will work as the Firewall of the HomeLab.
 
 # Scripts:
-[Packer](packer/ "Packer")
-
 [Terraform](terraform/ "Terraform")
 
 [Ansible](ansible/ "Ansible")
