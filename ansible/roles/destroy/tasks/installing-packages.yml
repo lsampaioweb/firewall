@@ -1,0 +1,5 @@
+---
+- name: "Upgrading all packages"
+  community.general.pkgng:
+    name: "*"
+    state: "latest"
