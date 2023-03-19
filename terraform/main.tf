@@ -19,7 +19,7 @@ module "dynamic_inventory" {
       public_ip   = module.homelab_project.vms[key].ipv4
       password_id = module.homelab_project.vms[key].clone
 
-      state       = value.state
+      state = value.state
     }
   ]
 }

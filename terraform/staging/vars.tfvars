@@ -16,9 +16,9 @@ vm_instance = {
         bridge = "vmbr3"
       }
     }
-    
+
     # Project
-    state  = "MASTER"
+    state = "MASTER"
   },
   "02" = {
     # VM
@@ -39,6 +39,6 @@ vm_instance = {
     }
 
     # Project
-    state  = "BACKUP"
+    state = "BACKUP"
   }
 }
