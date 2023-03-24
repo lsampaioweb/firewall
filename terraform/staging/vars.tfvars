@@ -1,4 +1,4 @@
-vm_instance = {
+vm_instances = {
   "01" = {
     # VM
     networks = {
